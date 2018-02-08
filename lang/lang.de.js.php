@@ -1,0 +1,28 @@
+<?php
+$lang = array(
+  'loading' => 'Lade...',
+  'error_product_list_load' => 'Fehler beim Laden der Artikelliste.',
+  'sucess_categories_updated' => 'Kategoriezuordnung aktualisiert.',
+  'error_categories_updated' => 'Speichern der Kategorie fehlgeschlagen.',
+  'contextmenu_set_main_category' => 'als Hauptkategorie setzen',
+  'contextmenu_redefine' => 'als einzige Kategorie setzen',
+  'contextmenu_add' => 'hinzufügen',
+  'contextmenu_remove' => 'Kategorie entfernen',
+  'contextmenu_only_products_from_this_cat' => 'zeige nur Artikel aus dieser Kategorie',
+  'contextmenu_open_category_admin' => 'Kategorie bearbeiten',
+  'contextmenu_quit' => 'Abbrechen',
+  'datatables_sLengthMenu' => '_MENU_ Einträge anzeigen',
+  'datatables_sZeroRecords' => 'Keine Einträge vorhanden.',
+  'datatables_sInfo' => '_START_ bis _END_ von _TOTAL_ Einträgen',
+  'datatables_sInfoEmpty' => '0 bis 0 von 0 Einträgen',
+  'datatables_sInfoFiltered' => '(gefiltert von _MAX_  Einträgen)',
+  'datatables_sProcessing' => 'Bitte warten...',
+  'datatables_sSearch' => 'Suchen',
+  'datatables_sPostFix' => '',
+  'datatables_sInfoThousands' => '.',
+  'datatables_sFirst' => 'Erster',
+  'datatables_sLast' => 'Letzter',
+  'datatables_sNext' => 'Nächster',
+  'datatables_sPrevious' => 'Zurück',
+  );
+?>

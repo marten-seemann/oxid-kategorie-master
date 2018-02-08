@@ -1,0 +1,16 @@
+<phpdoc>
+  <title>OXID Category Master</title>
+  <parser>
+    <target>doc/php</target>
+  </parser>
+  <transformer>
+    <template name="responsive" />
+    <target>doc/php</target>
+  </transformer>
+  <files>
+    <directory>inc</directory>
+    <ignore>inc/json_encode_oldphp/</ignore>
+    <ignore>inc/config.inc.php</ignore>
+    <ignore>inc/timer.class.php</ignore>
+  </files>
+</phpdoc>

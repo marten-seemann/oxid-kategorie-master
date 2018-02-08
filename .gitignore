@@ -1,0 +1,15 @@
+/build/tmp
+/build/encoder/encrypted*
+/build/encoder/license.txt
+/build/Kategorie_Master/
+/build/Kategorie-Master/
+/build/Kategorie-Master-v*
+/build/productive
+/build/*.zip
+
+/doc/
+
+/config.php
+
+/.htaccess
+/.htpasswd

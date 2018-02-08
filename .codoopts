@@ -1,0 +1,4 @@
+--private 
+--title "OXID Category Master"
+--output-dir doc/coffee
+./assets/js/src/

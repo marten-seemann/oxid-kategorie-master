@@ -1,0 +1,320 @@
+@import "../bootstrap/css/bootstrap/variables";
+@import "../bootstrap/css/mods";
+
+@import "mods-ddslick";
+
+
+@mixin category_coloring($color) {
+  background-color: $color !important;
+  border-color: lighten($color, 5%) !important;
+}
+
+$media-tablet: "only screen and (max-width: 1024px)";
+
+$blue: lighten($brand-primary, 25%);
+$red: $brand-danger;
+
+header {
+  margin: 12px 0 5px 0;
+  padding-bottom: 6px;
+  height: 34px;
+  border-bottom: 1px solid #eeeeee;
+  @media #{$media-tablet} {
+    margin: 8px 0 2px 0;
+    padding-bottom: 3px;
+    #refresh {
+      display: none;
+    }
+  }
+  h1 {
+    width: 50%;
+    float: left;
+    span#help {
+      margin-left: 100px;
+      @media #{$media-tablet} {
+        margin-left: 50px;
+      }
+    }
+  }
+  div#header_functions_right {
+    margin-right: 20px;
+    // text-align: right
+    > div {
+      float: left;
+    }
+    > div:not(:first-child) {
+      margin-left: 22px;
+    }
+  }
+  div#category_master_language_switcher_wrapper, div#oxid_language_switcher_wrapper {
+    > div:first-child {
+      float: left;
+      padding-top: 5px;
+      margin-right: 8px;
+    }
+    > div:last-child {
+      float: right;
+    }
+  }
+}
+
+// bootstrap modal buttons (click on them triggers modal to show)
+span#category-info,
+span#articles-info {
+  margin-left: 35px;
+}
+
+section#articles {
+  h2 {
+    width: 70%;
+    float: left;
+  }
+  #sticky_scrolling_selector {  // the selector if sticky scrolling should be enabled
+    text-align: right;
+    padding-top: 5px;
+  }
+  #article_wrapper.fixed {  // needed for sticky scrolling
+    position: fixed;
+    top: 0;
+  }
+  #no_cats { // selector if only empty categories should be shown
+    float: left;
+    margin-right: 50px;
+  }
+  #no_cats input, #hidden_articles input { // fix positioning bug of the checkboxes above the articles table
+    position: relative;
+    top: -2px;
+  }
+  #only_products_from_cat div {
+    width: 600px;
+    padding: 6px;
+    margin-bottom: 10px;
+    span {
+      margin-left: 15px;
+    }
+  }
+  // styles for the datatable itself
+  table {
+    .hidden { // is used to hide a complete column
+      display: none;
+    }
+  }
+  tbody {
+    tr { // change the cursor to indicate that the rows are draggable
+      cursor: pointer;
+    }
+    tr.row_selected td {
+      background-color: $blue !important;
+    }
+    tr.article_hidden td:first-child {
+      font-style: italic;
+    }
+    td.price {
+      text-align: right;
+    }
+  }
+}
+
+// style for the dragging info
+div#dragg_notifier {
+  border: 1px solid #8c8c8c;
+  padding: 5px;
+  color: #404040;
+  background-color: #ffdddd;
+  margin-left: -17px;
+  div.row {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// modify the noty notifications
+.noty_message {
+  padding: 18px 50px !important;
+  .noty_text {
+    font-size: 1.3em;
+  }
+}
+
+
+// modify the tree
+#category_tree.jstree-default {
+  background: none;
+}
+
+#category_tree, #modal_categories {
+  clear: both;
+
+  a.jstree-search {
+    color: red;
+  }
+  .category_hidden a, .category_hidden {
+    color: #888888;
+  }
+  .category_inactive a, .category_inactive {
+    font-style: italic;
+  }
+}
+
+#category_tree {
+  li > a {
+    height: 100%;
+  }
+}
+
+.jstree-clicked {
+  $color-main-category: lighten(#fe7f7f, 15%);
+  $color-main-category-for-all: lighten(#fe7f7f, 3%);
+  $color-category: lighten(#99eeff, 10%);
+  $color-category-for-all: lighten(#99eeff, 2%);
+
+  @include category_coloring($color-category);
+  &.main_category {
+    @include category_coloring($color-main-category);
+  }
+  &.main_category.category_for_all {
+    @include category_coloring($color-main-category-for-all);
+  }
+  &.category_for_all {
+    @include category_coloring($color-category-for-all);
+  }
+}
+
+#modal_categories {
+  .category {
+    @extend .jstree-clicked;
+  }
+  .category.category_for_all {
+    @extend .jstree-clicked.category_for_all;
+  }
+  .main_category {
+    @extend .jstree-clicked.main_category;
+  }
+  .main_category.category_for_all {
+    @extend .jstree-clicked.main_category.category_for_all;
+  }
+}
+
+#tree_close_all {// function to close all nodes in the tree
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  input[type="button"] { // button to trigger the close all
+    width: 100px;
+    margin-left: 120px;
+  }
+}
+
+#search_hidden_cat_warning { // warning if *selected* tree nodes are hidden due to search or so
+  width: 62%;
+  position: relative;
+  left: 20px;
+  margin-top: 10px;
+  margin-left: -20px;
+  display: none;
+}
+
+// make the bootstrap modal fade in and out
+.modal.fade {
+  $time: 0.25s;
+  -webkit-transition: opacity $time linear, top $time ease-out;
+  -moz-transition: opacity $time linear, top $time ease-out;
+  -ms-transition: opacity $time linear, top $time ease-out;
+  -o-transition: opacity $time linear, top $time ease-out;
+  transition: opacity $time linear, top $time ease-out;
+}
+
+// modify the bootstrap headings
+// this is necessary due to changes introduced with bootstrap 2.1
+h1 {
+  font-size: 30px;
+  line-height: 1;
+  margin: 0px;
+  @media #{$media-tablet} {
+    font-size: 27px;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0px;
+  @media #{$media-tablet} {
+    font-size: 22px;
+  }
+}
+
+// modify the default bootstrap table layout
+.table th, .table td {
+  font-size: 0.92em;
+  padding: 3px 5px;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+.pagination a {
+  padding: 0 12px;
+  line-height: 30px;
+}
+
+// Boostrapify the DataTables
+div.dataTables_length {
+  float: right;
+  width: auto;
+  label {
+    float: left;
+    text-align: left;
+  }
+}
+
+div.dataTables_filter label {
+  float: right;
+}
+
+div.dataTables_info {
+  padding-top: 8px;
+  width: 100%;
+}
+
+div.dataTables_paginate {
+  float: right;
+  margin: 0;
+}
+
+table.table {
+  clear: both;
+  margin-bottom: 6px !important;
+
+  $sorting-background-blue: lighten($blue, 17%);
+
+  thead {
+    .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled {
+      vertical-align: middle;
+      cursor: pointer;
+      *cursor: hand;
+    }
+    .sorting {
+      background: url(../datatables/media/images/sort_both.png) no-repeat center right;
+    }
+    .sorting_asc {
+      background: $sorting-background-blue url(../datatables/media/images/sort_asc.png) no-repeat center right;
+    }
+    .sorting_desc {
+      background: $sorting-background-blue url(../datatables/media/images/sort_desc.png) no-repeat center right;
+    }
+    .sorting_asc_disabled {
+      background: url(../datatables/media/images/sort_asc_disabled.png) no-repeat center right;
+    }
+    .sorting_desc_disabled {
+      background: url(../datatables/media/images/sort_desc_disabled.png) no-repeat center right;
+    }
+  }
+
+  tbody {
+    tr.even td.sorting_1 {
+      background-color: $sorting-background-blue;
+    }
+  }
+}
