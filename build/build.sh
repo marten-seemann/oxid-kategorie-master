@@ -12,7 +12,7 @@ cd tmp
 echo "Retrieving code from GIT repo..."
 git clone --quiet ../.. .
 git submodule update --init --quiet
-rm -rf .git .gitignore .gitmodules *.sublime-project *.sublime-workspace build/ inc/lib/.git
+rm -rf .git .gitignore .gitmodules README.md *.sublime-project *.sublime-workspace build/ inc/lib/.git
 rm -rf encoder/encrypted_5 encoder/encrypted_5_7.0 encoder/encrypted_53 encoder/encrypted_53_7.0 encoder/encrypted_54
 
 # copy to resolve all symlinks
