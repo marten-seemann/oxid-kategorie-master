@@ -4,6 +4,10 @@ Für Details siehe https://shop.oxid-responsive.com/Module/OXID-Kategorie-Master
 
 Die Installationsdateien können unter https://github.com/marten-seemann/oxid-kategorie-master/releases heruntergeladen werden.
 
+## Install
+
+Upload the directory *kategorie-master* to the root directory of the shop (NOT the *modules* directory). Then run the *sql/install.sql* to install the required database entries.
+
 ## Build from source
 
 Run
